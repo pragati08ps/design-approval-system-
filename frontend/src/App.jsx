@@ -8,6 +8,9 @@ import CreateProject from './pages/CreateProject';
 import UploadDesign from './pages/UploadDesign';
 import ProjectDetail from './pages/ProjectDetail';
 import UserManagement from './pages/UserManagement';
+import TaskManagement from './pages/TaskManagement';
+import Analytics from './pages/Analytics';
+import Calendar from './pages/Calendar';
 import { ROLES } from './utils/constants';
 
 function App() {
@@ -32,7 +35,7 @@ function App() {
                     <Route
                         path="/create-project"
                         element={
-                            <ProtectedRoute allowedRoles={[ROLES.DIGITAL_MARKETER]}>
+                            <ProtectedRoute allowedRoles={[ROLES.ADMIN, ROLES.MANAGER, ROLES.DIGITAL_MARKETER]}>
                                 <CreateProject />
                             </ProtectedRoute>
                         }
@@ -52,6 +55,33 @@ function App() {
                         element={
                             <ProtectedRoute allowedRoles={[ROLES.ADMIN]}>
                                 <UserManagement />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/tasks"
+                        element={
+                            <ProtectedRoute>
+                                <TaskManagement />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/analytics"
+                        element={
+                            <ProtectedRoute allowedRoles={[ROLES.ADMIN, ROLES.MANAGER, ROLES.PYTHON_DEVELOPER]}>
+                                <Analytics />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/calendar"
+                        element={
+                            <ProtectedRoute>
+                                <Calendar />
                             </ProtectedRoute>
                         }
                     />

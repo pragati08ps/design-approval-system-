@@ -13,12 +13,9 @@ async def get_all_users(
     current_user: UserResponse = Depends(get_current_user),
     db=Depends(get_database)
 ):
-    """Get all users (Admin only)"""
-    if current_user.role != "Admin":
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Only admins can view all users"
-        )
+    """Get all users (Accessible to all authenticated users)"""
+    # Permission check removed to allow task assignment by any user
+
     
     users_collection = db.users
     users = await users_collection.find().to_list(length=None)

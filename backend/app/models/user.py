@@ -10,9 +10,9 @@ UserRole = Literal[
     "Designer",
     "Digital Marketer",
     "Admin",
-    "Graphic Designer",
+    "Frontend Developer",
     "Manager",
-    "CEO",
+    "Python Developer",
     "Client"
 ]
 

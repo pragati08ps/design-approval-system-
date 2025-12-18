@@ -3,9 +3,9 @@ export const ROLES = {
     DESIGNER: 'Designer',
     DIGITAL_MARKETER: 'Digital Marketer',
     ADMIN: 'Admin',
-    GRAPHIC_DESIGNER: 'Graphic Designer',
+    FRONTEND_DEVELOPER: 'Frontend Developer',
     MANAGER: 'Manager',
-    CEO: 'CEO',
+    PYTHON_DEVELOPER: 'Python Developer',
     CLIENT: 'Client'
 };
 
@@ -13,7 +13,7 @@ export const ROLES = {
 export const STAGES = {
     DIGITAL_MARKETER: 'digital_marketer',
     DESIGNER: 'designer',
-    GRAPHIC_DESIGNER: 'graphic_designer',
+    FRONTEND_DEVELOPER: 'frontend_developer',
     MANAGER: 'manager',
     ADMIN: 'admin',
     CLIENT: 'client',
@@ -24,7 +24,7 @@ export const STAGES = {
 export const STAGE_NAMES = {
     [STAGES.DIGITAL_MARKETER]: 'Content Upload',
     [STAGES.DESIGNER]: 'Design Upload',
-    [STAGES.GRAPHIC_DESIGNER]: 'Graphic Designer Review',
+    [STAGES.FRONTEND_DEVELOPER]: 'Frontend Developer Review',
     [STAGES.MANAGER]: 'Manager Review',
     [STAGES.ADMIN]: 'Admin Review',
     [STAGES.CLIENT]: 'Client Review',
@@ -33,14 +33,23 @@ export const STAGE_NAMES = {
 
 // Design Types
 export const DESIGN_TYPES = [
-    'Poster',
-    'Webpage',
-    'Video',
-    'Brochure',
-    'Flyers',
-    'Logo',
-    'Nameboard',
-    'Letterhead'
+    'webdesign',
+    'logo',
+    'poster',
+    'brochure',
+    'flyers',
+    'video',
+    'nameboard',
+    'letterhead'
+];
+
+export const LOGO_CHECKPOINTS = [
+    'spelling',
+    'color contrast',
+    '3 variant',
+    'shape',
+    'symbol',
+    'vector'
 ];
 
 // API Base URL

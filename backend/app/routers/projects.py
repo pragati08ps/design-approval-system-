@@ -32,7 +32,7 @@ async def create_project(
     current_user: UserResponse = Depends(get_current_user)
 ):
     """
-    Create a new project (Digital Marketer only).
+    Create a new project (Admin and Manager only).
 
     Args:
         project_data: Project creation data
@@ -42,12 +42,12 @@ async def create_project(
         Created project
 
     Raises:
-        HTTPException: If user is not Digital Marketer
+        HTTPException: If user is not Admin or Manager
     """
     if not can_create_project(current_user.role):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Only Digital Marketers can create projects"
+            detail="Only Admin, Manager, and Digital Marketer can create projects"
         )
 
     db = get_database()
@@ -303,22 +303,9 @@ async def get_projects(
     db = get_database()
 
     # Build query based on role
+    # Allow all users to view all projects
     query = {}
-    if current_user.role == "Digital Marketer":
-        # Only their projects
-        query = {"digital_marketer_id": ObjectId(current_user.id)}
-    elif current_user.role in ["Designer"]:
-        # Projects in designer stage or where they uploaded
-        query = {"current_stage": "designer"}
-    elif current_user.role in ["Admin", "CEO", "Manager"]:
-        # All projects
-        query = {}
-    elif current_user.role == "Graphic Designer":
-        # Projects in graphic_designer stage
-        query = {"current_stage": "graphic_designer"}
-    elif current_user.role == "Client":
-        # Projects in client stage
-        query = {"current_stage": "client"}
+
 
     # Get projects
     projects = await db.projects.find(query).sort("created_at", -1).to_list(length=1000)

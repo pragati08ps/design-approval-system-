@@ -19,7 +19,7 @@ def get_next_stage(current_stage: str, action: str) -> Optional[str]:
     workflow_sequence = [
         "digital_marketer",
         "designer",
-        "graphic_designer",
+        "frontend_developer",
         "manager",
         "admin",
         "client",
@@ -56,7 +56,7 @@ def can_approve_stage(user_role: str, project_stage: str) -> bool:
     """
     # Mapping of stages to roles that can approve them
     stage_role_mapping = {
-        "graphic_designer": ["Graphic Designer"],
+        "frontend_developer": ["Frontend Developer"],
         "manager": ["Manager"],
         "admin": ["Admin"],
         "client": ["Client"]
@@ -89,7 +89,7 @@ def can_create_project(user_role: str) -> bool:
     Returns:
         True if user can create projects, False otherwise
     """
-    return user_role == "Digital Marketer"
+    return user_role in ["Admin", "Manager", "Digital Marketer"]
 
 
 def validate_stage_transition(
